@@ -47,6 +47,7 @@ public class CHATFRAME extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -79,10 +80,14 @@ public class CHATFRAME extends javax.swing.JFrame {
         jScrollPane2.setEnabled(false);
 
         jTextPane1.setEnabled(false);
+        jTextPane1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextPane1KeyPressed(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTextPane1);
 
         Invia.setText("Invia");
-        Invia.setEnabled(false);
         Invia.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 InviaMouseClicked(evt);
@@ -203,6 +208,11 @@ public class CHATFRAME extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void InviaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InviaMouseClicked
+        invio();
+    }//GEN-LAST:event_InviaMouseClicked
+
+    
+    void invio(){
         try {
             // TODO add your handling code here:
             jTextArea1.append(nickname+": "+jTextPane1.getText()+"\n");
@@ -210,17 +220,32 @@ public class CHATFRAME extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(CHATFRAME.class.getName()).log(Level.SEVERE, null, ex);
         }
-        jTextPane1.setText("");
-    }//GEN-LAST:event_InviaMouseClicked
-
+        
+    }
+    
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         try {            
             U.invia("e;");
+            U.setConn(false);
+            JOptionPane.showMessageDialog(this,"La connessione è terminata");
+            U.setIpdest("");
+            jTextArea1.setText("");
+            U.disattivaElementi();
+            jLabel1.setText("Connessione non stabilita");
         } catch (IOException ex) {
             Logger.getLogger(CHATFRAME.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jTextPane1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextPane1KeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode()==10){
+            invio();
+             jTextPane1.setText("");
+        }
+       
+    }//GEN-LAST:event_jTextPane1KeyPressed
 
     /**
      * @param args the command line arguments
