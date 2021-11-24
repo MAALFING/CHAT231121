@@ -112,6 +112,14 @@ public class PeerUDP extends Thread{
 //                    System.out.print(": ");
 //                    System.out.println(S[1]);
                 }
+                else if(S[0].equals("e")){
+                    conn=false;
+                    JOptionPane.showMessageDialog(F,"La connessione è terminata");
+                    ipdest="";
+                    F.jTextArea1.setText("");
+                    disattivaElementi();
+                    F.jLabel1.setText("Connessione non stabilita");
+                }
             } catch (IOException ex) {
                 Logger.getLogger(PeerUDP.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -120,10 +128,14 @@ public class PeerUDP extends Thread{
             
     }
     
-    void attivaElementi(){
-        
+    void attivaElementi(){        
         F.jButton1.setEnabled(!conn);
         F.jTextPane1.setEnabled(conn);
+    }
+    
+    void disattivaElementi(){        
+        F.jButton1.setEnabled(conn);
+        F.jTextPane1.setEnabled(!conn);
     }
     
     

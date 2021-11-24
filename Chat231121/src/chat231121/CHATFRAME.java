@@ -214,10 +214,8 @@ public class CHATFRAME extends javax.swing.JFrame {
     }//GEN-LAST:event_InviaMouseClicked
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-        try {
-            // TODO add your handling code here:
-
-            U.invia("e");
+        try {            
+            U.invia("e;");
         } catch (IOException ex) {
             Logger.getLogger(CHATFRAME.class.getName()).log(Level.SEVERE, null, ex);
         }
