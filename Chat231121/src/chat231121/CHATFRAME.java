@@ -181,13 +181,14 @@ public class CHATFRAME extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
         String ipdest = (String) JOptionPane.showInputDialog(null, "Inserisci l'ip remoto", "Scegli destinatario", JOptionPane.PLAIN_MESSAGE);
+        System.out.println(ipdest);
         U.setIpdest(ipdest);
         
         
         try {
             // TODO add your handling code here:
 
-            U.invia(new String("c;" + nickname),ipdest);
+            U.invia(new String("c;" + nickname));
         } catch (IOException ex) {
             Logger.getLogger(CHATFRAME.class.getName()).log(Level.SEVERE, null, ex);
         }

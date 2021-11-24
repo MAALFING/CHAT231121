@@ -121,6 +121,7 @@ public class PeerUDP extends Thread{
     }
     
     void attivaElementi(){
+        
         F.jButton1.setEnabled(!conn);
         F.jTextPane1.setEnabled(conn);
     }
@@ -151,6 +152,7 @@ public class PeerUDP extends Thread{
       byte[] risp = new byte[1500];
         DatagramPacket R = new DatagramPacket(risp,risp.length);
         S.receive(R);
+        ipdest = R.getAddress().toString().substring(1);
         return new String(risp);  
     }
     
