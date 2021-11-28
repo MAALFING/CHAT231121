@@ -139,13 +139,13 @@ public class PeerUDP extends Thread{
     
     void attivaElementi(){        
         F.jButton1.setEnabled(!conn);
-        F.jTextPane1.setEnabled(conn);
+        F.jTextField1.setEnabled(conn);
         F.jButton3.setEnabled(conn);
     }
     
     void disattivaElementi(){        
         F.jButton1.setEnabled(conn);
-        F.jTextPane1.setEnabled(!conn);
+        F.jTextField1.setEnabled(!conn);
         F.jButton3.setEnabled(!conn);
     }
     
@@ -156,16 +156,6 @@ public class PeerUDP extends Thread{
         DatagramPacket D = new DatagramPacket(di, di.length);
         InetAddress A =  InetAddress.getByName(ipdest);
          System.out.println(n+" -> " + ipdest);
-        D.setAddress(A);
-        D.setPort(2003);
-        S.send(D);
-    }
-     
-     
-     synchronized void invia(String n, String ip) throws UnknownHostException, IOException{
-        byte[] di = n.getBytes();
-        DatagramPacket D = new DatagramPacket(di, di.length);
-        InetAddress A =  InetAddress.getByName(ip);
         D.setAddress(A);
         D.setPort(2003);
         S.send(D);
