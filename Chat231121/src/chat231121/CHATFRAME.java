@@ -91,7 +91,6 @@ public class CHATFRAME extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.setText("jTextField1");
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextField1KeyPressed(evt);
@@ -209,14 +208,18 @@ public class CHATFRAME extends javax.swing.JFrame {
 
     
     void invio(){
-        try {
+        if(!jTextField1.getText().equals("")){
+          try {
             // TODO add your handling code here:
             jTextArea1.append(nickname+": "+jTextField1.getText()+"\n");
             U.invia("m;"+jTextField1.getText());
         } catch (IOException ex) {
             Logger.getLogger(CHATFRAME.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         jTextField1.setText("");
+        }
+        
     }
     
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
